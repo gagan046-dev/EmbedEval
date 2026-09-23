@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+	--paper: #f5f3ed;
+	--surface: #fffefa;
+	--ink: #171916;
+	--muted: #696d67;
+	--line: #d8d8cf;
+	--coral: #e65336;
+	--coral-dark: #b93622;
+	--teal: #087f72;
+	--amber: #b87512;
+	--soft-teal: #dcece7;
+	--soft-coral: #f7ded6;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+	margin: 0;
+	background: var(--paper);
+	color: var(--ink);
+	font-family: var(--font-sans), sans-serif;
+	letter-spacing: 0;
+}
+
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+::selection { background: var(--soft-coral); color: var(--ink); }
+
+.page-grid {
+	background-image:
+		linear-gradient(rgba(23, 25, 22, 0.045) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(23, 25, 22, 0.045) 1px, transparent 1px);
+	background-size: 28px 28px;
+}
+
+.eyebrow {
+	font-family: var(--font-mono), monospace;
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0;
+	text-transform: uppercase;
+}
+
+.control {
+	width: 100%;
+	min-height: 42px;
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	background: var(--surface);
+	padding: 0.65rem 0.75rem;
+	color: var(--ink);
+	outline: none;
+}
+
+.control:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(8, 127, 114, 0.12); }
+
+.panel {
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	background: var(--surface);
+}
+
+.btn-primary, .btn-secondary, .btn-quiet {
+	display: inline-flex;
+	min-height: 42px;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border-radius: 6px;
+	padding: 0.65rem 1rem;
+	font-size: 0.875rem;
+	font-weight: 700;
+	transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.btn-primary { background: var(--coral); color: white; }
+.btn-primary:hover { background: var(--coral-dark); }
+.btn-secondary { border: 1px solid var(--ink); background: transparent; color: var(--ink); }
+.btn-secondary:hover { background: var(--ink); color: white; }
+.btn-quiet { border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.btn-quiet:hover { border-color: var(--ink); }
+
+.metric-number {
+	font-family: var(--font-mono), monospace;
+	font-variant-numeric: tabular-nums;
+}
+
+@keyframes rise {
+	from { opacity: 0; transform: translateY(18px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+.rise { animation: rise 600ms ease both; }
+.rise-delay-1 { animation-delay: 100ms; }
+.rise-delay-2 { animation-delay: 200ms; }
+
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+	.rise, .rise-delay-1, .rise-delay-2 { animation: none; }
+}
